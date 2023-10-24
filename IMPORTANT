@@ -1,0 +1,19 @@
+Modifications of pytube
+
+file: __init__.py
+action: add
+line: 20
+code: from pytube.exceptions import AgeRestrictedError
+
+file: ...\Python3xx\Lib\site-packages\pytube\exceptions.py
+action: edit
+line: 68
+code: raise TypeError
+
+
+----
+If previously it was hard to silent AgeRestrictedError without modifying enormous amount of source code of pytube lib,
+    after these straightforward modifications you can catch a TypeError once AgeRestrictedError occurs.
+        Simple Example:
+            except TypeError:
+                print(f"The video is 18+")

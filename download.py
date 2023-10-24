@@ -1,5 +1,6 @@
 import os
 import pytube
+import time
 from moviepy.editor import AudioFileClip
 
 
@@ -11,6 +12,9 @@ class Downloader:
         if not downloads_folder:
             downloads_folder = "downloads"
             self.downloads_folder_path = os.path.join(os.curdir, downloads_folder)
+        else:
+            self.downloads_folder_path = downloads_folder
+
 
         # Creates the downloads folder if it doesn't exist
         os.makedirs(self.downloads_folder_path, exist_ok=True)
@@ -40,10 +44,19 @@ class Downloader:
         file = AudioFileClip(mp4_file_fullpath)
         file.write_audiofile(self.filename + '.mp3')
         file.close()
-
-        # deleting mp4 leftovers
-        os.remove(self.filename + '.mp4')
-        os.chdir(original_directory)
+        time.sleep(3)
+        try:
+            # deleting mp4 leftovers
+            os.remove(self.filename + '.mp4')
+            os.chdir(original_directory)
+        except FileNotFoundError:
+            print(self.filename + '.mp4', 'was skipped due to unsupported character in the name. Delete the mp4 file manually.')
+            pass
+        except pytube.exceptions.AgeRestrictedError as error:
+            print(f"Error {error} occurred during proceeding of the track {self.filename}")
+            pass
+        except TypeError:
+            print(f"The video is 18+")
 
 
 if __name__ == '__main__':
