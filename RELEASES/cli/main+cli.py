@@ -1,5 +1,5 @@
-from reader import ReadFile
-from download import Downloader
+from scripts.reader import ReadFile
+from scripts.download import Downloader
 
 if __name__ == '__main__':
     try:

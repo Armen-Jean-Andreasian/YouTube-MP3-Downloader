@@ -1,5 +1,5 @@
 class ReadFile:
-    filepath = 'archive/links.txt'
+    filepath = '../files/archive/links.txt'
 
     @staticmethod
     def read(file_with_urls=None):

@@ -1,5 +1,5 @@
-from reader import ReadFile
-from download import Downloader
+from scripts.reader import ReadFile
+from scripts.download import Downloader
 
 if __name__ == '__main__':
     custom_urls_file = r"C:\Users\pc\Desktop\dummy\links.txt"
@@ -15,4 +15,6 @@ if __name__ == '__main__':
         except TypeError:
             print(
                 f"The video is 18+. Try another url of the same song. E.g. clean version, or only song without a video clip.")
+        except Exception:
+            print("Could not connect to YouTube. Try again in 30 seconds.")
         continue
