@@ -15,7 +15,7 @@ if __name__ == '__main__':
         for url in urls:
             try:
                 downloader = Downloader(url, downloads_folder=custom_downloads_folder)
-                downloader.download()
+                print(downloader.download())
             except TypeError:
                 print(f"The video is 18+. Try another url of the same song. E.g. clean version, or only song without a video clip.")
             continue
