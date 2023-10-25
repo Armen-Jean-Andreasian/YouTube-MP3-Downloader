@@ -3,6 +3,10 @@ import PySimpleGUI as sg
 import threading
 
 from RELEASES.gui.elements.layout import get_layout
+
+from RELEASES.gui.menu_bar.about import get_about
+from RELEASES.gui.menu_bar.how_to_use import usage
+
 from RELEASES.gui.gui_scripts.download_song import download_and_display
 from RELEASES.gui.gui_scripts.open_folder import open_downloads_folder
 from files.config import get_logo
@@ -34,10 +38,12 @@ while True:
     file_path_local = values['file']
     folder_path_local = values['folder']
 
-    if file_path_local:
-        from elements.widgets import Widgets
-        first_field = Widgets.middle_column()
-        first_field.update()
+    # Menu About
+    if event == "About":
+        get_about()
+    # Menu Usage
+    if event == "How to use?":
+        usage()
 
     # Submit
     if event == "Submit" and threads_count == 0:

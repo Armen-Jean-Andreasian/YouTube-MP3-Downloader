@@ -1,4 +1,6 @@
+import PySimpleGUI as sg
 from RELEASES.gui.elements.widgets import Widgets
+from RELEASES.gui.menu_bar.menu import get_menu
 
 left_column = Widgets.left_column()
 middle_column = Widgets.middle_column()
@@ -15,6 +17,7 @@ view_downloads_button = bottom_panel[1]
 
 def get_layout():
     layout = [
+        [sg.Menu(get_menu())],
         [
             left_column,
             middle_column,

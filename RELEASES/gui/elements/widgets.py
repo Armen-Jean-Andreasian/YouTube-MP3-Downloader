@@ -2,18 +2,19 @@ import PySimpleGUI as sg
 
 sg.theme('DarkRed1')
 
+
 class Widgets:
     @staticmethod
     def left_column() -> sg.Column:
         return sg.Column([
-            [sg.Text("Choose the text file with URLs")],
-            [sg.Text("Choose the destination folder")],
+            [sg.Text("Choose the text file containing URL-s:")],
+            [sg.Text("Choose the destination folder:")],
         ])
 
     @staticmethod
     def right_column() -> sg.Column:
         return sg.Column([
-            [sg.FileBrowse(key='file', enable_events=True, target='file_input')],
+            [sg.FileBrowse(key='file', enable_events=True, target='file_input', file_types=(('Text Files', '*.txt'),))],
             [sg.FolderBrowse(key='folder', enable_events=True, target='folder_input')],
         ])
 
@@ -26,7 +27,8 @@ class Widgets:
 
     @staticmethod
     def downloads_list():
-        return [sg.Multiline(size=(80, 10), key='output', autoscroll=True, reroute_cprint=True, disabled=True, sbar_trough_color="Red")]
+        return [sg.Multiline(size=(89, 10), key='output', autoscroll=True, reroute_cprint=True, disabled=True,
+                             sbar_trough_color="Red")]
 
     @staticmethod
     def download_status():
@@ -36,4 +38,5 @@ class Widgets:
     def bottom_panel():
         return [sg.Button("Submit"),
                 sg.Button("View Downloads"),
-                sg.Button("Exit")]
+                sg.Button("Exit"),
+                ]
