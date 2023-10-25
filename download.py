@@ -50,13 +50,15 @@ class Downloader:
             os.remove(self.filename + '.mp4')
             os.chdir(original_directory)
         except FileNotFoundError:
-            print(self.filename + '.mp4', 'was skipped due to unsupported character in the name. Delete the mp4 file manually.')
-            pass
+            return f"{self.filename} | Status: Done. However, the deletion of the .mp4 file failed. You may need to delete the .mp4 file manually."
+
         except pytube.exceptions.AgeRestrictedError as error:
-            print(f"Error {error} occurred during proceeding of the track {self.filename}")
-            pass
+            return f"Error {error} occurred during proceeding of the track {self.filename}"
+
         except TypeError:
-            print(f"The video is 18+")
+            return "The video is 18+"
+
+        return f"{self.filename} | Status: Done"
 
 
 if __name__ == '__main__':
