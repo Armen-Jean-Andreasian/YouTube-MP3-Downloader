@@ -7,7 +7,7 @@ from moviepy.editor import AudioFileClip
 class Downloader:
     def __init__(self, url: str, downloads_folder: os.path = None):
         self.yt = pytube.YouTube(url)
-        self.filename = self.yt.streams[0].title
+        self.filename: str = self.yt.streams[0].title
 
         if not downloads_folder:
             downloads_folder = "downloads"
@@ -50,13 +50,13 @@ class Downloader:
             os.remove(self.filename + '.mp4')
             os.chdir(original_directory)
         except FileNotFoundError:
-            return f"{self.filename} | Status: Done. However, the deletion of the .mp4 file failed. You may need to delete the .mp4 file manually."
-
-        except pytube.exceptions.AgeRestrictedError as error:
-            return f"Error {error} occurred during proceeding of the track {self.filename}"
+            return f"{self.filename.strip()} | Status: Done. However, the deletion of the .mp4 file failed. You may need to delete the .mp4 file manually."
 
         except TypeError:
             return "The video is 18+"
+
+        except Exception as error:
+            return f"Error {error} occurred during proceeding of the track {self.filename}"
 
         return f"{self.filename} | Status: Done"
 
