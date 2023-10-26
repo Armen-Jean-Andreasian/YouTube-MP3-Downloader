@@ -1,3 +1,5 @@
 .idea
 files/downloads/*
+venv
+setup.py
 

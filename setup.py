@@ -13,7 +13,7 @@ if sys.platform == "win32":
     base = "Win32GUI"
 
 executables = [
-    Executable("main+gui.py", base=base, icon=logo)
+    Executable("gui.py", base=base, icon=logo)
 ]
 
 setup(

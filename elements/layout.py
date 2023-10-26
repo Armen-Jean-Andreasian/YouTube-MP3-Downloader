@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
-from RELEASES.gui.elements.widgets import Widgets
-from RELEASES.gui.menu_bar.menu import get_menu
+from elements.widgets import Widgets
+from menu_bar.menu import get_menu
 
 left_column = Widgets.left_column()
 middle_column = Widgets.middle_column()
